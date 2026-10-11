@@ -151,11 +151,6 @@ src/services/api.ts       all API calls, with offline fallbacks
 | Lansangan, Justine O. | Digital Marketing Specialist · Multimedia, QA & Documentation |
 | Obane, Gela Mae P. | Digital Marketing Specialist · Multimedia, QA & Documentation |
 
---- | --- |
-| _Name_ | _e.g. design, home page, API_ |
-| _Name_ | |
-| _Name_ | |
-
 ---
 
 RouteOne Auto Club is a fictional company created for a web publishing course project. Car and F1 photos belong to their respective owners and are used for educational purposes.
