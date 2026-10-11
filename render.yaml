@@ -1,0 +1,13 @@
+# Render Blueprint: full site (pages + Express API)
+# Render dashboard -> New -> Blueprint -> pick this repo
+services:
+  - type: web
+    name: routeone-auto-club
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22

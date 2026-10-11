@@ -1,0 +1,78 @@
+[
+  {
+    "id": "private-viewing",
+    "name": "Private Showroom Viewing",
+    "category": "Curated Appointment",
+    "subtitle": "Exclusive 1-on-1 access to our private vehicle vault and technical specs.",
+    "duration": "90 Minutes",
+    "location": "RouteOne Private Gallery, Silverstone Hub",
+    "availability": "Immediate Booking",
+    "price": "Complimentary for Members / $250 Deposit",
+    "description": "Explore our collection through a personalized private appointment guided by a senior automotive curator. Inspect carbon-fiber architecture, aerodynamic aero tunnels, and bespoke vehicle histories in complete privacy with complimentary hospitality.",
+    "image": "/images/cars/bugatti-tourbillon.webp",
+    "inclusions": [
+      "Dedicated senior automotive concierge",
+      "Comprehensive vehicle walkaround & telemetry inspection",
+      "Private members lounge reception & refreshments",
+      "Option to configure bespoke acquisition allocations"
+    ],
+    "ctaLabel": "Request Viewing"
+  },
+  {
+    "id": "track-experience",
+    "name": "Track Experience",
+    "category": "High-Performance Driving",
+    "subtitle": "Get behind the wheel and unleash genuine motorsport capability on circuit.",
+    "duration": "Half-Day (4.5 Hours)",
+    "location": "RouteOne Proving Grounds & GP Circuit",
+    "availability": "Limited Slots",
+    "price": "$1,850 per driver",
+    "description": "Step out of the paddock and onto the tarmac. Includes professional driver debriefing, vehicle dynamics orientation, radio communication link, and three 15-minute high-speed stints driving exotic supercars with one-on-one professional coaching.",
+    "image": "/images/cars/porsche-911gt3.webp",
+    "inclusions": [
+      "FIA-certified helmet, HANS device & Nomex suit fitting",
+      "Bespoke telemetry analysis (corner exit speed, braking G-force)",
+      "Dedicated pit crew & tire technician support",
+      "GoPro 4K cockpit video telemetry package with data overlay"
+    ],
+    "ctaLabel": "Book Experience"
+  },
+  {
+    "id": "performance-consultation",
+    "name": "Performance Consultation",
+    "category": "Acquisition & Strategy",
+    "subtitle": "Speak directly with an automotive specialist about your next machine.",
+    "duration": "60 Minutes",
+    "location": "RouteOne Engineering Studio or Virtual Suite",
+    "availability": "Immediate Booking",
+    "price": "$450 (Credited toward acquisition)",
+    "description": "Speak with a RouteOne automotive specialist about acquiring, leasing, or custom-building your next performance machine. We review market allocations, depreciation hedging, track-pack specifications, and private member exchanges.",
+    "image": "/images/cars/maserati-mc20.webp",
+    "inclusions": [
+      "Bespoke vehicle specification and option audit",
+      "Global supercar allocation network access",
+      "Track setup optimization matrix (camber, toe, tire pressures)",
+      "Direct consultation with RouteOne Chief Engineer"
+    ],
+    "ctaLabel": "Talk to an Expert"
+  },
+  {
+    "id": "collector-experience",
+    "name": "Collector Experience",
+    "category": "VIP All-Access",
+    "subtitle": "A curated multi-car circuit program for serious collectors and drivers.",
+    "duration": "Full Day (8 Hours)",
+    "location": "Private Circuit & Hangar Facilities",
+    "availability": "By Invitation",
+    "price": "$4,200 (All-inclusive)",
+    "description": "A bespoke tier designed for collectors seeking back-to-back comparisons across naturally aspirated V12s, twin-turbo V8s, and the RouteOne R1 concept. Includes VIP pit lane hospitality, private mechanic, and personal racing instructor.",
+    "image": "/images/cars/valkyrie-amr.webp",
+    "inclusions": [
+      "Back-to-back testing of 3 exotic supercars + R1 concept simulator",
+      "Private pit lane garage with dedicated race technician",
+      "Michelin Pilot Sport Cup 2 R tire allocation",
+      "Private dining experience by Michelin-starred guest chef"
+    ],
+    "ctaLabel": "Inquire Now"
+  }
+]

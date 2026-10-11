@@ -1,0 +1,19 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Private data created at runtime (hashed passwords of signed-up accounts)
+data/accounts.json
+data/fleet-status.json
+
+# Test output
+test-results/
+playwright-report/
+
+# Old local video files (the site uses the YouTube embed instead)
+public/videos/

@@ -1,0 +1,527 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  [data-theme="garage-light"] {
+    --theme-name: 'Garage Light';
+    --black: #F6F7F5;
+    --carbon: #EBEDE8;
+    --surface: #FFFFFF;
+    --surface-light: #E2E5DF;
+
+    --white: #101214;
+    --muted: #565C62;
+    --faint: #8C9399;
+
+    --border: rgba(16, 18, 20, 0.12);
+
+    --racing-red: #D71920;
+    --champagne: #9C7D2B;
+    --silver: #454C52;
+
+    --bg-body: #F1F2EF;
+    --bg-container: #F6F7F5;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #EBEDE8;
+    --bg-card: #FFFFFF;
+    --text-primary: #101214;
+    --text-secondary: #2B3035;
+    --text-muted: #565C62;
+    --text-faint: #7F878D;
+    --border-subtle: rgba(16, 18, 20, 0.10);
+    --border-strong: rgba(16, 18, 20, 0.22);
+    --grid-color: rgba(0, 0, 0, 0.035);
+  }
+
+  [data-theme="circuit-dark"] {
+    --theme-name: 'Circuit Dark';
+    --black: #050607;
+    --carbon: #0B0D0E;
+    --surface: #111415;
+    --surface-light: #181B1C;
+
+    --white: #F4F3EF;
+    --muted: #85898A;
+    --faint: #45494A;
+
+    --border: rgba(255, 255, 255, 0.10);
+
+    --racing-red: #D71920;
+    --champagne: #C9B37E;
+    --silver: #AEB4B5;
+
+    --bg-body: #070809;
+    --bg-container: #0B0D0E;
+    --bg-surface: #111415;
+    --bg-surface-elevated: #151718;
+    --bg-card: #111314;
+    --text-primary: #F4F3EF;
+    --text-secondary: #AEB4B5;
+    --text-muted: #85898A;
+    --text-faint: #505251;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --grid-color: rgba(255, 255, 255, 0.015);
+  }
+
+  html {
+    width: 100%;
+    min-height: 100%;
+    zoom: 1;
+  }
+
+  body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+    background-color: var(--bg-body, #E2E5DF);
+    color: var(--text-primary, #101214);
+    font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* Cross-browser scrollbar hiding utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.font-heading {
+  font-family: 'Archivo Variable', 'Inter Variable', system-ui, sans-serif;
+  font-stretch: 125%;
+  font-variation-settings: 'wdth' 125;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.font-sans-ui {
+  font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-body, #050607);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong, #181B1C);
+  border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D71920;
+}
+
+/* 100% Zoom Default & Full-Width Precision Layout */
+.routeone-container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: var(--bg-container, #F6F7F5);
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Garage Light Atelier Theme Overrides */
+[data-theme="garage-light"] {
+  color-scheme: light;
+}
+
+[data-theme="garage-light"] .routeone-container {
+  box-shadow: none;
+  border: none;
+}
+
+[data-theme="garage-light"] .bg-\[\#070809\],
+[data-theme="garage-light"] [class*="bg-[#070809]"] {
+  background-color: #E2E5DF !important;
+}
+
+[data-theme="garage-light"] .bg-\[\#0B0D0E\],
+[data-theme="garage-light"] [class*="bg-[#0B0D0E]"] {
+  background-color: #F6F7F5 !important;
+}
+
+[data-theme="garage-light"] .bg-\[\#0E1011\],
+[data-theme="garage-light"] [class*="bg-[#0E1011]"] {
+  background-color: #EBEDE8 !important;
+}
+
+[data-theme="garage-light"] .bg-\[\#111314\],
+[data-theme="garage-light"] .bg-\[\#111415\],
+[data-theme="garage-light"] [class*="bg-[#111314]"],
+[data-theme="garage-light"] [class*="bg-[#111415]"] {
+  background-color: #FFFFFF !important;
+}
+
+[data-theme="garage-light"] .bg-\[\#151718\],
+[data-theme="garage-light"] .bg-\[\#181B1C\],
+[data-theme="garage-light"] [class*="bg-[#151718]"],
+[data-theme="garage-light"] [class*="bg-[#181B1C]"] {
+  background-color: #EBEDE8 !important;
+}
+
+[data-theme="garage-light"] .bg-\[\#0B0D0E\]\/90,
+[data-theme="garage-light"] .bg-\[\#0B0D0E\]\/80,
+[data-theme="garage-light"] .bg-\[\#111415\]\/95 {
+  background-color: rgba(246, 247, 245, 0.95) !important;
+}
+
+[data-theme="garage-light"] .text-\[\#F4F3EF\],
+[data-theme="garage-light"] .text-\[\#F4F4F1\],
+[data-theme="garage-light"] [class*="text-[#F4F3EF]"],
+[data-theme="garage-light"] [class*="text-[#F4F4F1]"] {
+  color: #101214 !important;
+}
+
+[data-theme="garage-light"] .text-\[\#AEB4B5\],
+[data-theme="garage-light"] [class*="text-[#AEB4B5]"] {
+  color: #2B3035 !important;
+}
+
+[data-theme="garage-light"] .text-\[\#85898A\],
+[data-theme="garage-light"] .text-\[\#8B8D8C\],
+[data-theme="garage-light"] [class*="text-[#85898A]"],
+[data-theme="garage-light"] [class*="text-[#8B8D8C]"] {
+  color: #565C62 !important;
+}
+
+[data-theme="garage-light"] .text-\[\#505251\],
+[data-theme="garage-light"] .text-\[\#45494A\],
+[data-theme="garage-light"] [class*="text-[#505251]"],
+[data-theme="garage-light"] [class*="text-[#45494A]"] {
+  color: #7F878D !important;
+}
+
+/* Dark Media & Showreel Canvas Contrast Protection (Ensures text on dark media/photos is never inverted to dark) */
+[data-theme="garage-light"] .showreel-frame,
+[data-theme="garage-light"] .showreel-frame *,
+[data-theme="garage-light"] #showreel-modal,
+[data-theme="garage-light"] #showreel-modal *,
+[data-theme="garage-light"] .dark-media-canvas,
+[data-theme="garage-light"] .dark-media-canvas *,
+[data-theme="garage-light"] .collection-card-media,
+[data-theme="garage-light"] .collection-card-media *,
+[data-theme="garage-light"] .photo-badge,
+[data-theme="garage-light"] .photo-badge *,
+[data-theme="garage-light"] .vehicle-photo-overlay,
+[data-theme="garage-light"] .vehicle-photo-overlay *,
+[data-theme="garage-light"] #vehicle-modal-hero,
+[data-theme="garage-light"] #vehicle-modal-hero *,
+[data-theme="garage-light"] #vehicle-compare-modal,
+[data-theme="garage-light"] #vehicle-compare-modal * {
+  color-scheme: dark;
+}
+
+[data-theme="garage-light"] .showreel-frame .showreel-title,
+[data-theme="garage-light"] .showreel-frame h3,
+[data-theme="garage-light"] #showreel-modal .modal-title,
+[data-theme="garage-light"] #showreel-modal h3,
+[data-theme="garage-light"] .collection-card-media .photo-badge,
+[data-theme="garage-light"] .collection-card-media .photo-overlay-text,
+[data-theme="garage-light"] #vehicle-modal-hero h2,
+[data-theme="garage-light"] #vehicle-modal-hero .hero-text-white,
+[data-theme="garage-light"] .force-text-white {
+  color: #FFFFFF !important;
+}
+
+[data-theme="garage-light"] .showreel-frame .showreel-subtitle,
+[data-theme="garage-light"] .showreel-frame p,
+[data-theme="garage-light"] #showreel-modal p,
+[data-theme="garage-light"] .collection-card-media .photo-overlay-sub,
+[data-theme="garage-light"] #vehicle-modal-hero .hero-text-silver,
+[data-theme="garage-light"] .force-text-silver {
+  color: #E2E8F0 !important;
+}
+
+[data-theme="garage-light"] .showreel-frame .showreel-badge,
+[data-theme="garage-light"] .showreel-frame .showreel-tag,
+[data-theme="garage-light"] .collection-card-media .photo-badge {
+  color: #FFFFFF !important;
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+[data-theme="garage-light"] .showreel-frame .showreel-gold,
+[data-theme="garage-light"] .collection-card-media .photo-gold,
+[data-theme="garage-light"] #vehicle-modal-hero .hero-text-gold {
+  color: #FCD34D !important;
+}
+
+[data-theme="garage-light"] [class*="border-white\/"] {
+  border-color: rgba(16, 18, 20, 0.12) !important;
+}
+
+[data-theme="garage-light"] [class*="divide-white\/"] > * {
+  border-color: rgba(16, 18, 20, 0.10) !important;
+}
+
+[data-theme="garage-light"] [class*="hover:bg-white\/0.04"]:hover,
+[data-theme="garage-light"] [class*="hover:bg-white\/0.06"]:hover,
+[data-theme="garage-light"] [class*="hover:bg-white\/0.08"]:hover,
+[data-theme="garage-light"] [class*="hover:bg-white\/10"]:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="garage-light"] .bg-white\/\[0\.02\],
+[data-theme="garage-light"] .bg-white\/\[0\.03\],
+[data-theme="garage-light"] .bg-white\/\[0\.04\],
+[data-theme="garage-light"] .bg-white\/\[0\.05\],
+[data-theme="garage-light"] .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.035) !important;
+}
+
+/* Subtle 'Fade-in' Entrance Animation using CSS Transitions for Navigation Tabs */
+@keyframes mainContentFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-tab-enter {
+  animation: mainContentFadeIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms ease;
+  will-change: opacity, transform, filter;
+}
+
+/* Exclusive Member Club Transition Keyframes & Atmospheric Effects */
+@keyframes memberAuraSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes memberUnlockFlash {
+  0% {
+    background-color: rgba(215, 25, 32, 0.08);
+  }
+  50% {
+    background-color: rgba(201, 179, 126, 0.06);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.member-atmosphere-flash {
+  animation: memberUnlockFlash 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Telemetry Micro-Animations & Data Point Transitions */
+@keyframes telemetryUpdateFlash {
+  0% {
+    background-color: rgba(215, 25, 32, 0.18);
+    border-color: rgba(215, 25, 32, 0.5);
+    box-shadow: 0 0 14px rgba(215, 25, 32, 0.25);
+  }
+  100% {
+    background-color: transparent;
+    border-color: inherit;
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+.telemetry-updated {
+  animation: telemetryUpdateFlash 750ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes radarSweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radarSweep 8s linear infinite;
+}
+
+@keyframes radarPulseRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+}
+
+.animate-radar-pulse {
+  animation: radarPulseRing 3.2s ease-in-out infinite;
+}
+
+@keyframes telemetryScanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.animate-telemetry-scan {
+  animation: telemetryScanline 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-tab-enter,
+  .telemetry-updated,
+  .animate-radar-sweep,
+  .animate-radar-pulse,
+  .animate-telemetry-scan {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Navigation Brand Logo Aspect Ratio & Alignment Protection */
+.logo-container,
+#nav-brand-logo {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+.logo-wrapper {
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Official logo keeps its own 485:246 proportions — size by height only, never stretch */
+.logo-wrapper img {
+  max-width: none !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Zero touch/pointer events on the decorative background video only
+   (the showreel player and the email preview must stay clickable) */
+iframe[aria-hidden="true"] {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+
+
+/* Light theme: dark gradient panels must flip too, otherwise their (already darkened) text becomes unreadable */
+[data-theme="garage-light"] [class*="from-[#131517]"],
+[data-theme="garage-light"] [class*="from-[#181B1C]"] {
+  background-image: linear-gradient(180deg, #EBEDE8 0%, #F6F7F5 100%) !important;
+}
+[data-theme="garage-light"] [class*="from-[#131517]"].border-white\/\[0\.08\],
+[data-theme="garage-light"] [class*="from-[#181B1C]"][class*="border-white"] {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Light theme: bright accent text needs deeper shades to stay readable on light panels */
+[data-theme="garage-light"] .text-emerald-400:not(.dark-media-canvas *):not(.showreel-frame *):not(.collection-card-media *):not(#vehicle-modal-hero *) { color: #047857 !important; }
+[data-theme="garage-light"] .text-\[\#D8B52A\]:not(.dark-media-canvas *):not(.showreel-frame *):not(.collection-card-media *):not(#vehicle-modal-hero *) { color: #8A6D12 !important; }
+
+/* Placeholders must read as hints, not pre-filled values */
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+}
+[data-theme="garage-light"] input::placeholder,
+[data-theme="garage-light"] textarea::placeholder {
+  color: #A3A9AE !important;
+  font-style: italic;
+}
+
+
+/* ------------------------------------------------------------------
+   Clean & modern pass: softer shapes, readable text, calmer surfaces
+   (in @layer base so explicit utilities like rounded-full still win)
+------------------------------------------------------------------- */
+@layer base {
+  body {
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  button,
+  a[class~="border"] {
+    border-radius: 8px;
+  }
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select,
+  textarea {
+    border-radius: 8px;
+  }
+  :is(div, article, section, aside, form, li, a, label)[class~="border"] {
+    border-radius: 14px;
+  }
+  span[class~="border"] {
+    border-radius: 6px;
+  }
+  img {
+    border-radius: inherit;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid #D71920;
+    outline-offset: 2px;
+  }
+}
+
+/* The old design used 2px corners everywhere; lift them to match */
+.rounded-xs { border-radius: 6px; }
+.rounded-sm { border-radius: 8px; }
+
+/* Small labels: readable size and weight instead of tiny tracked caps */
+.text-\[11px\] { letter-spacing: 0.005em; }
+
+/* Hero headline: slightly narrower width axis so the two lines sit beside the photo, not on it */
+.hero-display {
+  font-stretch: 112%;
+  font-variation-settings: 'wdth' 112;
+  letter-spacing: -0.02em;
+}
+@media (max-width: 639px) {
+  .hero-display { font-stretch: 100%; font-variation-settings: 'wdth' 100; }
+}
+
+/* Demo notices stay readable in the dark theme */
+[data-theme="circuit-dark"] .text-amber-800 { color: #FCD34D; }

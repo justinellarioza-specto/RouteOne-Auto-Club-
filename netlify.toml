@@ -1,0 +1,21 @@
+# Netlify: static version (no Express server).
+# Pages and GET data still work from public/data/*.json;
+# form submissions stay in the visitor's browser session only.
+[build]
+  command = "npm run build:static"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# No API server here: fail /api calls fast so the site uses its JSON fallback
+[[redirects]]
+  from = "/api/*"
+  to = "/404.html"
+  status = 404
+
+# Single-page app: every other path loads the app
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
