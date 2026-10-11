@@ -101,7 +101,7 @@ export const SpeedingCarLoader: React.FC<SpeedingCarLoaderProps> = ({ isLoading,
           id="race-start-intro"
           role="status"
           aria-live="polite"
-          aria-label={askEnter ? "Welcome to RouteOne Auto Club" : "Loading RouteOne Auto Club"}
+          aria-label={askEnter ? "Tap anywhere to enter RouteOne Auto Club" : "Loading RouteOne Auto Club"}
           onClick={finish}
           initial={{ y: 0, opacity: 1 }}
           exit={
@@ -162,13 +162,22 @@ export const SpeedingCarLoader: React.FC<SpeedingCarLoaderProps> = ({ isLoading,
                       e.stopPropagation();
                       finish();
                     }}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="flex items-center justify-center h-11 min-w-[132px] px-8 rounded-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                    style={{ background: RED, color: '#FFFFFF', fontSize: 14, fontWeight: 600 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0.35, 1, 0.35] }}
+                    transition={{ duration: 2, ease: 'easeInOut', repeat: Infinity }}
+                    className="flex items-center gap-3 sm:gap-4 py-2 cursor-pointer outline-none whitespace-nowrap"
+                    style={{
+                      background: 'transparent',
+                      color: '#E8E9E6',
+                      fontSize: 12,
+                      fontWeight: 600,
+                      letterSpacing: '0.32em',
+                    }}
                   >
-                    Enter
+                    <span aria-hidden="true" style={{ width: 28, height: 1, background: 'rgba(232,233,230,0.45)' }} />
+                    {/* negative margin cancels the letter-spacing after the last letter, so it stays centred */}
+                    <span style={{ marginRight: '-0.32em' }}>TAP ANYWHERE TO ENTER</span>
+                    <span aria-hidden="true" style={{ width: 28, height: 1, background: 'rgba(232,233,230,0.45)' }} />
                   </motion.button>
                 )}
               </AnimatePresence>
