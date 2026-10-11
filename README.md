@@ -142,8 +142,16 @@ src/services/api.ts       all API calls, with offline fallbacks
 
 ## Team
 
-| Member | Contribution |
+| Member | Role |
 | --- | --- |
+| Larioza, Justine Lee N. | Project Lead & Deployment · UI/UX Designer & Branding · Front-end Developer |
+| Tiosejo, Louisse Ken W. | UI/UX Designer & Branding · Front-end Developer |
+| Napukaw, John Brent C. | Back-end & API Developer |
+| Manabat, Daniel D. | Back-end & API Developer · Multimedia, QA & Documentation |
+| Lansangan, Justine O. | Digital Marketing Specialist · Multimedia, QA & Documentation |
+| Obane, Gela Mae P. | Digital Marketing Specialist · Multimedia, QA & Documentation |
+
+--- | --- |
 | _Name_ | _e.g. design, home page, API_ |
 | _Name_ | |
 | _Name_ | |
