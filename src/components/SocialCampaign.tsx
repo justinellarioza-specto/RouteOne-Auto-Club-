@@ -14,9 +14,10 @@ import {
   Target,
   Users,
   Hash,
+  ExternalLink,
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import { campaignLink, CampaignChannel, setCampaignSource } from '../services/api';
+import { setCampaignSource } from '../services/api';
 
 interface SocialCampaignProps {
   /** Opens the booking form from the post's button, so the mockup is clickable */
@@ -32,7 +33,6 @@ const HASHTAG = '#RouteOneGrandOpening';
 export const SocialCampaign: React.FC<SocialCampaignProps> = ({ onCta }) => {
   const { isGarageLight } = useTheme();
   const [copied, setCopied] = useState(false);
-  const [copiedLink, setCopiedLink] = useState<string | null>(null);
   const [liked, setLiked] = useState(false);
 
   const muted = isGarageLight ? 'text-[#565C62]' : 'text-[#85898A]';
@@ -40,12 +40,6 @@ export const SocialCampaign: React.FC<SocialCampaignProps> = ({ onCta }) => {
   const gold = isGarageLight ? 'text-[#9C7D2B]' : 'text-[#C9B37E]';
   const panel = isGarageLight ? 'bg-[#F6F7F5] border-black/10' : 'bg-[#111415] border-white/[0.08]';
   const line = isGarageLight ? 'border-black/10' : 'border-white/[0.06]';
-
-  const copyLink = (channel: CampaignChannel) => {
-    navigator.clipboard?.writeText(campaignLink(channel));
-    setCopiedLink(channel);
-    setTimeout(() => setCopiedLink(null), 1800);
-  };
 
   const handleCopy = () => {
     navigator.clipboard?.writeText(HASHTAG);
@@ -80,30 +74,30 @@ export const SocialCampaign: React.FC<SocialCampaignProps> = ({ onCta }) => {
   const channels = [
     {
       platform: 'Instagram',
-      handle: '@routeoneautoclub',
+      handle: '@f1',
       icon: Instagram,
-      url: 'https://instagram.com/routeoneautoclub',
+      url: 'https://www.instagram.com/f1/',
       note: 'The poster, countdown stories and opening-day Reels',
     },
     {
       platform: 'Facebook',
-      handle: 'RouteOne Auto Club',
+      handle: 'Formula 1',
       icon: Facebook,
-      url: 'https://facebook.com/routeoneautoclub',
+      url: 'https://www.facebook.com/Formula1',
       note: 'An event page with RSVP, the poster as cover photo',
     },
     {
       platform: 'TikTok',
-      handle: '@routeoneautoclub',
+      handle: '@f1',
       icon: Share2,
-      url: 'https://tiktok.com/@routeoneautoclub',
+      url: 'https://www.tiktok.com/@f1',
       note: 'Short engine-sound teasers counting down the days',
     },
     {
       platform: 'YouTube',
-      handle: 'RouteOne Auto Club',
+      handle: '@Formula1',
       icon: Youtube,
-      url: 'https://youtube.com/@routeoneautoclub',
+      url: 'https://www.youtube.com/@Formula1',
       note: 'A premiere of the first hot laps on opening day',
     },
   ];
@@ -259,15 +253,14 @@ export const SocialCampaign: React.FC<SocialCampaignProps> = ({ onCta }) => {
             ))}
           </ol>
 
-          {/* Platforms, each with its tracked link */}
+          {/* Platforms, each linking to the official Formula 1 account */}
           <h3 className={`font-heading text-lg mt-10 mb-1 ${strong}`}>Where it runs</h3>
           <p className={`text-xs mb-4 ${muted}`}>
-            Each platform links to the site with its own tag, so the admin inbox shows where every booking came from.
+            What we post on each platform. Follow Formula 1 there for the latest from the paddock.
           </p>
           <ul className="grid sm:grid-cols-2 gap-3">
             {channels.map((ch) => {
               const Icon = ch.icon;
-              const key = ch.platform.toLowerCase() as CampaignChannel;
               return (
                 <li key={ch.platform} className={`p-4 border rounded-md flex flex-col ${panel}`}>
                   <div className="flex items-start gap-3">
@@ -287,22 +280,18 @@ export const SocialCampaign: React.FC<SocialCampaignProps> = ({ onCta }) => {
                       <p className={`text-sm leading-snug mt-1.5 ${muted}`}>{ch.note}</p>
                     </div>
                   </div>
-                  <button
-                    onClick={() => copyLink(key)}
-                    className={`mt-3 ml-12 self-start inline-flex items-center gap-2 px-2.5 py-1 border rounded text-xs cursor-pointer transition-colors ${
-                      isGarageLight ? 'bg-white border-black/10 hover:border-[#D71920]/50' : 'bg-black/20 border-white/10 hover:border-[#D71920]/50'
+                  <a
+                    href={ch.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Follow ${ch.handle} on ${ch.platform} (opens in a new tab)`}
+                    className={`group/follow mt-3 ml-12 self-start inline-flex items-center gap-2 px-2.5 py-1 border rounded text-xs transition-colors hover:border-[#D71920] hover:text-[#D71920] ${
+                      isGarageLight ? 'bg-white border-black/10 text-[#2B3035]' : 'bg-black/20 border-white/10 text-[#C9CDCE]'
                     }`}
-                    title="Copy tracked link"
                   >
-                    <code className={isGarageLight ? 'text-[#2B3035]' : 'text-[#C9CDCE]'}>/?source={key}</code>
-                    {copiedLink === key ? (
-                      <span className="flex items-center gap-1 text-[#D71920]">
-                        <Check className="w-3 h-3" /> Copied
-                      </span>
-                    ) : (
-                      <Copy className="w-3 h-3 opacity-60" />
-                    )}
-                  </button>
+                    <span className="font-mono">Follow {ch.handle}</span>
+                    <ExternalLink className="w-3 h-3 opacity-60 group-hover/follow:opacity-100" />
+                  </a>
                 </li>
               );
             })}
