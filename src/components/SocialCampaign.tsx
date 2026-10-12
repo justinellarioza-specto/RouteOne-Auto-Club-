@@ -168,9 +168,9 @@ export const SocialCampaign: React.FC<SocialCampaignProps> = ({ onCta }) => {
             srcSet="/images/campaign/grand-opening-640.webp 640w, /images/campaign/grand-opening.webp 1080w"
             sizes="(min-width: 1024px) 420px, 100vw"
             width={1080}
-            height={1080}
+            height={1230}
             loading="lazy"
-            alt="Grand Opening poster: a red Formula 1 car speeding through a corner with the RouteOne name painted on the track"
+            alt="Grand Opening poster: a red Formula 1 car racing past the words Grand Opening, with Save the date 9.16.26"
             className="w-full h-auto block rounded-none"
           />
 
@@ -206,8 +206,8 @@ export const SocialCampaign: React.FC<SocialCampaignProps> = ({ onCta }) => {
             <p className={`text-sm mt-1 leading-relaxed ${strong}`}>
               <span className="font-semibold">routeoneautoclub</span>{' '}
               <span className={isGarageLight ? 'text-[#2B3035]' : 'text-[#C9CDCE]'}>
-                We’re open. 🏁 RouteOne Auto Club officially opens its doors at Silverstone. Come see the
-                collection, take your first laps and meet the team. Book your drive at the link in our bio.
+                Save the date: 16 September 2026. 🏁 RouteOne Auto Club opens its doors at Silverstone. Come see
+                the collection, take your first laps and meet the team. Book your drive at the link in our bio.
               </span>{' '}
               <span className="text-[#3B6FB6]">{HASHTAG} #DriveTheExtraordinary #Silverstone</span>
             </p>
