@@ -104,7 +104,7 @@ Every page has its own address, so the browser's Back and Forward buttons work a
 
 ## Campaign tracking
 
-Links in the social and email campaigns carry a tag such as `/?source=instagram` or `/?source=email`. The site remembers it for the visit, saves it with any inquiry, and the admin inbox shows **Where inquiries come from**: how many inquiries and bookings each channel produced. Each platform's tracked link is shown in the social campaign on the Contact page.
+Links in the social and email campaigns carry a tag such as `/?source=instagram` or `/?source=email`. The site remembers it for the visit, saves it with any inquiry, and the admin inbox shows **Where inquiries come from**: how many inquiries and bookings each channel produced. In the social campaign on the Contact page, each platform card has a Follow button that opens the official Formula 1 account on that platform.
 
 ## Put it online
 
