@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   X,
@@ -135,7 +136,9 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
 
   if (!isOpen || !carA || !carB) return null;
 
-  return (
+  // Rendered on <body>: the page sits inside an animated container, which would otherwise
+  // pin this "fixed" overlay to the page instead of the screen
+  return createPortal(
     <div
       id="vehicle-compare-modal"
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md overflow-y-auto"
@@ -203,14 +206,14 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={() => {
-                  const r1 = allVehicles.find((v) => v.id.includes('r1')) || allVehicles[0];
-                  const mcl = allVehicles.find((v) => v.id.includes('mclaren')) || allVehicles[1];
+                  const r1 = allVehicles.find((v) => v.id === 'r1-concept') || allVehicles[0];
+                  const mcl = allVehicles.find((v) => v.id === 'mclaren-750s') || allVehicles[1];
                   onSelectVehicleA(r1);
                   onSelectVehicleB(mcl);
                 }}
                 className={`px-2.5 py-1 border transition-colors whitespace-nowrap cursor-pointer uppercase ${
-                  carA.id.includes('r1') && carB.id.includes('mclaren')
-                    ? 'border-[#D71920] text-[#F4F3EF] bg-[#180E10]'
+                  carA.id === 'r1-concept' && carB.id === 'mclaren-750s'
+                    ? 'border-[#D71920] bg-[#D71920] !text-white'
                     : 'border-white/[0.08] text-[#85898A] hover:text-[#F4F3EF]'
                 }`}
               >
@@ -219,14 +222,14 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
 
               <button
                 onClick={() => {
-                  const r1 = allVehicles.find((v) => v.id.includes('r1')) || allVehicles[0];
-                  const lambo = allVehicles.find((v) => v.id.includes('lamborghini')) || allVehicles[1];
+                  const r1 = allVehicles.find((v) => v.id === 'r1-concept') || allVehicles[0];
+                  const lambo = allVehicles.find((v) => v.id === 'lamborghini-svj') || allVehicles[1];
                   onSelectVehicleA(r1);
                   onSelectVehicleB(lambo);
                 }}
                 className={`px-2.5 py-1 border transition-colors whitespace-nowrap cursor-pointer uppercase ${
-                  carA.id.includes('r1') && carB.id.includes('lamborghini')
-                    ? 'border-[#D71920] text-[#F4F3EF] bg-[#180E10]'
+                  carA.id === 'r1-concept' && carB.id === 'lamborghini-svj'
+                    ? 'border-[#D71920] bg-[#D71920] !text-white'
                     : 'border-white/[0.08] text-[#85898A] hover:text-[#F4F3EF]'
                 }`}
               >
@@ -235,14 +238,14 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
 
               <button
                 onClick={() => {
-                  const lambo = allVehicles.find((v) => v.id.includes('lamborghini')) || allVehicles[1];
-                  const porsche = allVehicles.find((v) => v.id.includes('porsche')) || allVehicles[0];
+                  const lambo = allVehicles.find((v) => v.id === 'lamborghini-svj') || allVehicles[1];
+                  const porsche = allVehicles.find((v) => v.id === 'porsche-gt3rs') || allVehicles[0];
                   onSelectVehicleA(lambo);
                   onSelectVehicleB(porsche);
                 }}
                 className={`px-2.5 py-1 border transition-colors whitespace-nowrap cursor-pointer uppercase ${
-                  carA.id.includes('lamborghini') && carB.id.includes('porsche')
-                    ? 'border-[#D71920] text-[#F4F3EF] bg-[#180E10]'
+                  carA.id === 'lamborghini-svj' && carB.id === 'porsche-gt3rs'
+                    ? 'border-[#D71920] bg-[#D71920] !text-white'
                     : 'border-white/[0.08] text-[#85898A] hover:text-[#F4F3EF]'
                 }`}
               >
@@ -260,19 +263,19 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
             <div className="bg-[#111415] border border-white/[0.10] p-4 sm:p-5 flex flex-col justify-between relative group">
               <div>
                 {/* Vehicle Selector Dropdown */}
-                <div className="flex items-center justify-between mb-3 gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
                   <span className="text-xs text-[#D71920] font-bold flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 bg-[#D71920]" />
                     Benchmark machine · 01
                   </span>
-                  <div className="relative">
+                  <div className="relative w-full sm:w-auto min-w-0">
                     <select
                       value={carA.id}
                       onChange={(e) => {
                         const found = allVehicles.find((v) => v.id === e.target.value);
                         if (found) onSelectVehicleA(found);
                       }}
-                      className="bg-[#0B0D0E] text-[#F4F3EF] text-xs px-3 py-1.5 pr-7 border border-white/[0.14] rounded-none focus:outline-none focus:border-[#D71920] appearance-none cursor-pointer"
+                      className="bg-[#0B0D0E] text-[#F4F3EF] text-xs px-3 py-1.5 pr-7 border border-white/[0.14] rounded-none focus:outline-none focus:border-[#D71920] appearance-none cursor-pointer w-full sm:w-auto max-w-full"
                     >
                       {allVehicles.map((v) => (
                         <option key={v.id} value={v.id} className="bg-[#0B0D0E] text-[#F4F3EF]">
@@ -300,8 +303,8 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
                     </span>
                   </div>
                   <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-xs text-[#F4F3EF]">
-                    <span className="text-[#AEB4B5]">{carA.availability}</span>
-                    <span className="text-[#C9B37E] font-medium">{carA.price || 'Allocation'}</span>
+                    <span style={{ color: '#E4E6E7' }}>{carA.availability}</span>
+                    <span className="font-medium" style={{ color: '#E5CF95' }}>{carA.price || 'Allocation'}</span>
                   </div>
                 </div>
 
@@ -345,19 +348,19 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
             <div className="bg-[#111415] border border-white/[0.10] p-4 sm:p-5 flex flex-col justify-between relative group">
               <div>
                 {/* Vehicle Selector Dropdown */}
-                <div className="flex items-center justify-between mb-3 gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
                   <span className="text-xs text-[#D71920] font-bold flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 bg-[#D71920]" />
                     Benchmark machine · 02
                   </span>
-                  <div className="relative">
+                  <div className="relative w-full sm:w-auto min-w-0">
                     <select
                       value={carB.id}
                       onChange={(e) => {
                         const found = allVehicles.find((v) => v.id === e.target.value);
                         if (found) onSelectVehicleB(found);
                       }}
-                      className="bg-[#0B0D0E] text-[#F4F3EF] text-xs px-3 py-1.5 pr-7 border border-white/[0.14] rounded-none focus:outline-none focus:border-[#D71920] appearance-none cursor-pointer"
+                      className="bg-[#0B0D0E] text-[#F4F3EF] text-xs px-3 py-1.5 pr-7 border border-white/[0.14] rounded-none focus:outline-none focus:border-[#D71920] appearance-none cursor-pointer w-full sm:w-auto max-w-full"
                     >
                       {allVehicles.map((v) => (
                         <option key={v.id} value={v.id} className="bg-[#0B0D0E] text-[#F4F3EF]">
@@ -385,8 +388,8 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
                     </span>
                   </div>
                   <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-xs text-[#F4F3EF]">
-                    <span className="text-[#AEB4B5]">{carB.availability}</span>
-                    <span className="text-[#C9B37E] font-medium">{carB.price || 'Allocation'}</span>
+                    <span style={{ color: '#E4E6E7' }}>{carB.availability}</span>
+                    <span className="font-medium" style={{ color: '#E5CF95' }}>{carB.price || 'Allocation'}</span>
                   </div>
                 </div>
 
@@ -834,6 +837,7 @@ export const VehicleCompareModal: React.FC<VehicleCompareModalProps> = ({
           </div>
         </div>
       </motion.div>
-    </div>
+    </div>,
+    document.body
   );
 };

@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -1286,14 +1287,7 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({
                     />
 
                     {/* Top Badges & Compare Toggle */}
-                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10">
-                      <span className="photo-badge px-2.5 py-1 bg-black/85 backdrop-blur-md border border-white/20 text-[11px] text-white font-semibold flex items-center gap-1.5 shadow-md rounded-xs">
-                        <span
-                          className="w-1.5 h-1.5 rounded-full shrink-0"
-                          style={{ backgroundColor: categoryAccent }}
-                        />
-                        <span>{car.badge || car.category}</span>
-                      </span>
+                    <div className="absolute top-3.5 right-3.5 flex items-center justify-end gap-2 z-10">
 
                       {/* Compare toggle */}
                       <button
@@ -1322,29 +1316,6 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({
                       </button>
                     </div>
 
-                    {/* Live Availability Status Pill on Photo */}
-                    <div className="absolute top-12 left-3.5 z-10 pointer-events-none">
-                      {isCurrentlyAvailable ? (
-                        <div className="px-2 py-0.5 bg-black/90 backdrop-blur-md border border-emerald-400/60 text-[11px] text-emerald-400 font-semibold flex items-center gap-1.5 shadow-md rounded-xs">
-                          <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                          </span>
-                          <span>Currently available</span>
-                        </div>
-                      ) : (
-                        <div className="px-2 py-0.5 bg-black/90 backdrop-blur-md border border-[#FCD34D]/60 text-[11px] text-[#FCD34D] font-semibold flex items-center gap-1.5 shadow-md rounded-xs">
-                          <span className="inline-flex rounded-full h-2 w-2 bg-[#FCD34D]"></span>
-                          <span>In private collection</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Quick Specs Overlay Preview (High-Contrast Dark Glass Bar) */}
-                    <div className="absolute bottom-2.5 left-3.5 right-3.5 flex items-center justify-between text-xs bg-black/80 backdrop-blur-md px-3 py-1 border border-white/15 rounded-xs shadow-md">
-                      <span className="text-white text-[11px] font-medium tracking-wide">{car.acceleration} (0–100)</span>
-                      <span className="text-[#FCD34D] font-bold text-[11px] tracking-wide">{car.power.split('@')[0]}</span>
-                    </div>
                   </div>
 
                   {/* Card Content Matching Section 8 */}
@@ -1480,8 +1451,8 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({
         </div>
       )}
 
-      {/* Floating Compare Dock - Fixed Bottom Bar */}
-      <AnimatePresence>
+      {/* Floating Compare Dock - Fixed Bottom Bar (rendered on <body> so it stays on screen) */}
+      {createPortal(<AnimatePresence>
         {compareVehicleIds.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -1567,7 +1538,7 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>, document.body)}
 
       {/* Side-by-Side Comparison Overlay Modal */}
       <VehicleCompareModal
