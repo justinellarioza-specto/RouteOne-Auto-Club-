@@ -129,11 +129,7 @@ export const Collection: React.FC<CollectionProps> = ({
 
                 {/* Badge overlay */}
                 <div
-                  className={`absolute top-3 right-3 px-2 py-0.5 backdrop-blur-md border text-[11px] rounded-sm ${
-                    isGarageLight
-                      ? 'bg-white/90 border-black/10 text-[#111415] font-medium'
-                      : 'bg-[#0B0D0E]/90 border-white/[0.08] text-[#AEB4B5]'
-                  }`}
+                  className="photo-chip absolute top-3 right-3 px-2 py-0.5 text-[11px] font-medium rounded-sm"
                 >
                   {car.category}
                 </div>

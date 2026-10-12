@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import React, { useState } from 'react';
 import { Play, X, Film, ExternalLink, Sparkles } from 'lucide-react';
 import { HERO_VIDEO_METADATA } from '../data/videoMetadata';
@@ -224,10 +225,10 @@ export const Showreel: React.FC = () => {
       </div>
 
       {/* YouTube Video Modal */}
-      {isOpen && (
+      {isOpen && createPortal(
         <div
           id="showreel-modal"
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[80] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
           onClick={() => setIsOpen(false)}
         >
           <div
@@ -285,7 +286,8 @@ export const Showreel: React.FC = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );

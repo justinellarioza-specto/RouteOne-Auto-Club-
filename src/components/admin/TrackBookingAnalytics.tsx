@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Calendar,
   CheckCircle2,
@@ -406,8 +407,8 @@ export const TrackBookingAnalytics: React.FC = () => {
       </div>
 
       {/* New Pit Reservation Modal */}
-      {isAddBookingModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
+      {isAddBookingModalOpen && createPortal(
+        <div className="fixed inset-0 z-[80] bg-black/80 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true">
           <div
             className={`w-full max-w-lg border rounded-xs overflow-hidden shadow-2xl p-6 ${
               isGarageLight ? 'bg-white border-black/15 text-[#101214]' : 'bg-[#121517] border-white/15 text-white'
@@ -523,7 +524,8 @@ export const TrackBookingAnalytics: React.FC = () => {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

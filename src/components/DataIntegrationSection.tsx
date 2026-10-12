@@ -432,7 +432,7 @@ export const DataIntegrationSection: React.FC<DataIntegrationSectionProps> = ({
                   />
 
                   {/* Top-Left Category Badge */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/80 backdrop-blur-xs border border-white/20 text-white text-[11px] font-semibold">
+                  <div className="photo-chip absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold">
                     {vehicle.badge || vehicle.category}
                   </div>
 
@@ -585,12 +585,12 @@ export const DataIntegrationSection: React.FC<DataIntegrationSectionProps> = ({
                   />
 
                   {/* Top-Left Category Badge */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/80 backdrop-blur-xs border border-[#D8B52A]/40 text-[#D8B52A] text-[11px] font-semibold">
+                  <div className="photo-chip photo-chip-gold absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold">
                     {exp.category}
                   </div>
 
                   {/* Top-Right Duration Badge */}
-                  <div className="absolute top-3 right-3 px-2 py-1 bg-black/80 backdrop-blur-xs border border-white/20 text-white text-[11px] flex items-center gap-1">
+                  <div className="photo-chip absolute top-3 right-3 px-2 py-1 text-[11px] flex items-center gap-1">
                     <Clock className="w-2.5 h-2.5 text-[#D8B52A]" />
                     <span>{exp.duration}</span>
                   </div>

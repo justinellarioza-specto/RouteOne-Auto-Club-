@@ -120,6 +120,24 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({
     'ELECTRIC': '#94A3B8', // Cool silver
   };
 
+  // Category name colour on the card body: strong enough to read on white (light) and near-black (dark)
+  const categoryLabelColor = (category: string, light: boolean): string => {
+    const cat = (category || '').toUpperCase();
+    const map: Record<string, [string, string]> = {
+      'SUPERCARS': ['#8A6A1F', '#C9B37E'],
+      'HYPERCARS': ['#4B5258', '#C3C8CA'],
+      'FORMULA 1': ['#C1121B', '#FF4D52'],
+      'F1 HERITAGE': ['#8A6A1F', '#D9BC5C'],
+      'TRACK': ['#9E1217', '#FF6B70'],
+      'SPORTS CARS': ['#2B3035', '#E4E6E7'],
+      'FAST CARS': ['#C1121B', '#FF4D52'],
+      'GRAND TOURERS': ['#4B5258', '#C3C8CA'],
+      'ELECTRIC': ['#3F5168', '#A9B8CC'],
+    };
+    const pair = map[cat] || ['#C1121B', '#FF4D52'];
+    return light ? pair[0] : pair[1];
+  };
+
   // Helper to check vehicle category match
   const checkVehicleMatchesCategory = (car: Vehicle, categoryId: string): boolean => {
     const cat = (car.category || '').toUpperCase();
@@ -985,7 +1003,7 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({
                 className={`px-2.5 py-1 transition-colors cursor-pointer flex items-center gap-1.5 rounded-xs ${
                   availabilityFilter === 'PRIVATE'
                     ? 'bg-[#C9B37E]/20 text-[#9C7D2B] dark:text-[#C9B37E] font-semibold border border-[#C9B37E]/40'
-                    : 'text-[#9C7D2B]/80 dark:text-[#C9B37E]/80 hover:text-[#9C7D2B] dark:hover:text-[#C9B37E]'
+                    : 'text-[#7E611B] dark:text-[#D9C28C] hover:text-[#5E4712] dark:hover:text-[#E5CF95]'
                 }`}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C9B37E]"></span>
@@ -1329,7 +1347,7 @@ export const CollectionPage: React.FC<CollectionPageProps> = ({
                         </span>
                         <span
                           className="text-[11px] font-semibold"
-                          style={{ color: categoryAccent }}
+                          style={{ color: categoryLabelColor(car.category, isGarageLight) }}
                         >
                           {car.category}
                         </span>

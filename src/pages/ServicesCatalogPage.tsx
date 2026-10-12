@@ -466,12 +466,12 @@ export const ServicesCatalogPage: React.FC<ServicesCatalogPageProps> = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111415] via-transparent to-transparent opacity-85" />
 
                     {/* Top Badge */}
-                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#0B0D0E]/90 border border-white/10 text-[11px] text-[#C9B37E] font-semibold">
+                    <div className="photo-chip photo-chip-gold absolute top-3 left-3 px-2.5 py-1 text-[11px] font-semibold">
                       {service.badge}
                     </div>
 
                     {/* Pricing Pill */}
-                    <div className="absolute bottom-3 right-3 px-3 py-1 bg-[#0B0D0E]/95 border border-white/20 text-xs font-bold text-white">
+                    <div className="photo-chip absolute bottom-3 right-3 px-3 py-1 text-xs font-bold">
                       {service.pricing}
                     </div>
                   </div>

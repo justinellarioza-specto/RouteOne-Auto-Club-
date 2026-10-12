@@ -378,7 +378,7 @@ function MainApp() {
           <main
             key={currentTab}
             id="main-content-container"
-            className={`flex-grow main-tab-enter transition-all duration-700 ease-out relative ${
+            className={`flex-grow main-tab-enter relative ${
               isMember
                 ? 'shadow-[inset_0_0_120px_rgba(215,25,32,0.035)]'
                 : ''

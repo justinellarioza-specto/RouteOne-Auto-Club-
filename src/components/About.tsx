@@ -152,7 +152,7 @@ export const About: React.FC<AboutProps> = ({ onOpenBookingModal }) => {
                   <span className="text-[11px] text-[#D8B52A] block font-medium">
                     FIA grade 1 tarmac
                   </span>
-                  <span className="text-base sm:text-lg font-heading text-white block font-light">
+                  <span className="force-text-white text-base sm:text-lg font-heading text-white block font-light">
                     The Private Circuit Sanctuary
                   </span>
                 </div>

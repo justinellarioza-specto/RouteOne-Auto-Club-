@@ -85,11 +85,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
 
               <div
-                className={`absolute bottom-2 right-2 px-2.5 py-1 text-[11px] border backdrop-blur-md rounded-sm ${
-                  isGarageLight
-                    ? 'bg-white/90 text-[#111415] border-black/10 font-medium'
-                    : 'bg-[#0B0D0E]/90 text-[#AEB4B5] border-white/[0.08]'
-                }`}
+                className="photo-chip absolute bottom-2 right-2 px-2.5 py-1 text-[11px] font-medium rounded-sm"
               >
                 Series 01 · R1 concept
               </div>

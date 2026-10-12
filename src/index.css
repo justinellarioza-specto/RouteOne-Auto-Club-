@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* "dark:" styles follow the site theme toggle (not the computer setting) */
+@custom-variant dark (&:where([data-theme="circuit-dark"], [data-theme="circuit-dark"] *));
+
 @layer base {
   :root,
   [data-theme="garage-light"] {
@@ -291,14 +294,14 @@
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
+/* No lasting transform / will-change here: either one would trap every "fixed" pop-up,
+   toast and bar inside the page instead of pinning it to the screen */
 .main-tab-enter {
-  animation: mainContentFadeIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms ease;
-  will-change: opacity, transform, filter;
+  animation: mainContentFadeIn 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Exclusive Member Club Transition Keyframes & Atmospheric Effects */
@@ -525,3 +528,56 @@ textarea::placeholder {
 
 /* Demo notices stay readable in the dark theme */
 [data-theme="circuit-dark"] .text-amber-800 { color: #FCD34D; }
+
+/* ---------- Readability fixes (contrast audit) ---------- */
+
+/* Labels that sit on photos: dark glass with light text in BOTH themes */
+.photo-chip,
+[data-theme="garage-light"] .photo-chip.photo-chip {
+  background-color: rgba(11, 13, 14, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #FFFFFF !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.photo-chip.photo-chip-gold,
+[data-theme="garage-light"] .photo-chip.photo-chip-gold {
+  color: #E5CF95 !important;
+  border-color: rgba(229, 207, 149, 0.45) !important;
+}
+[data-theme="garage-light"] .photo-chip * { color: inherit !important; }
+[data-theme="garage-light"] .photo-chip svg { color: #E5CF95 !important; }
+
+/* Light theme: champagne gold and pale greys are too faint on white, so use deeper tones
+   (text on photos and dark panels keeps the original colours) */
+[data-theme="garage-light"] [class*="text-[#C9B37E]"]:not(.photo-chip):not(.photo-chip *):not(.dark-media-canvas *):not(.showreel-frame *):not(.collection-card-media *):not(#vehicle-modal-hero *):not(#vehicle-compare-modal *):not(#race-start-intro *),
+[data-theme="garage-light"] [class*="text-[#B39343]"],
+[data-theme="garage-light"] [class*="text-[#D4AF37]"]:not(.dark-media-canvas *):not(.collection-card-media *) {
+  color: #7E611B !important;
+}
+[data-theme="garage-light"] [class*="text-[#8C9399]"]:not(.dark-media-canvas *):not(.collection-card-media *) {
+  color: #5F666B !important;
+}
+[data-theme="garage-light"] .text-\[\#505251\],
+[data-theme="garage-light"] .text-\[\#45494A\],
+[data-theme="garage-light"] [class*="text-[#505251]"],
+[data-theme="garage-light"] [class*="text-[#45494A]"] {
+  color: #5F666B !important;
+}
+
+/* Dark theme: the darkest greys disappear on near-black panels */
+[data-theme="circuit-dark"] [class*="text-[#505251]"],
+[data-theme="circuit-dark"] [class*="text-[#45494A]"] {
+  color: #8A8F91 !important;
+}
+[data-theme="garage-light"] [class*="text-[#10B981]"]:not(.dark-media-canvas *):not(.collection-card-media *) {
+  color: #047857 !important;
+}
+
+/* The video player stays dark in both themes */
+[data-theme="garage-light"] #showreel-modal .bg-\[\#0B0D0E\],
+[data-theme="garage-light"] #showreel-modal [class*="bg-[#0B0D0E]"] { background-color: #0B0D0E !important; }
+[data-theme="garage-light"] #showreel-modal .bg-\[\#0E1012\],
+[data-theme="garage-light"] #showreel-modal .bg-\[\#111415\],
+[data-theme="garage-light"] #showreel-modal [class*="bg-[#111415]"] { background-color: #111415 !important; }
+[data-theme="garage-light"] #showreel-modal [class*="border-white"] { border-color: rgba(255, 255, 255, 0.14) !important; }
