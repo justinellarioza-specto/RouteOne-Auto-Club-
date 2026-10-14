@@ -121,7 +121,7 @@ async function startServer() {
           "font-src 'self' data:",
           "media-src 'self'",
           "connect-src 'self'",
-          "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com",
+          "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://drive.google.com",
           "object-src 'none'",
           "base-uri 'self'",
           "form-action 'self'",

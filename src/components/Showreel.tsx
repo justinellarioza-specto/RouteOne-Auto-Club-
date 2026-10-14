@@ -1,13 +1,16 @@
 import { createPortal } from 'react-dom';
 import React, { useState } from 'react';
 import { Play, X, Film, ExternalLink, Sparkles } from 'lucide-react';
-import { HERO_VIDEO_METADATA } from '../data/videoMetadata';
 import { useTheme } from '../context/ThemeContext';
+
+// "Eyes on Me" by Ken Tiosejo, played with Google Drive's player (the file is shared with anyone who has the link)
+const FILM_ID = '1p_8ybBOsUEG8Mv59QSbjsDqgQTxcKOcG';
+const FILM_EMBED = `https://drive.google.com/file/d/${FILM_ID}/preview`;
+const FILM_URL = `https://drive.google.com/file/d/${FILM_ID}/view`;
 
 export const Showreel: React.FC = () => {
   const { isGarageLight } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const meta = HERO_VIDEO_METADATA;
 
   return (
     <section
@@ -46,14 +49,14 @@ export const Showreel: React.FC = () => {
 
         <div className="flex items-center gap-3 self-start sm:self-auto">
           <span className="text-xs px-2.5 py-1 bg-[#D71920]/10 text-[#D71920] border border-[#D71920]/30 font-semibold">
-            4K uhd 60FPS
+            Original film
           </span>
           <span
             className={`text-xs ${
               isGarageLight ? 'text-[#565C62]' : 'text-[#85898A]'
             }`}
           >
-            140 bpm audio sync
+            Edited by Ken Tiosejo
           </span>
         </div>
       </div>
@@ -70,7 +73,7 @@ export const Showreel: React.FC = () => {
         {/* Crisp Local High-Resolution F1 Track Visual */}
         <img
           src="/images/f1/f1-racing-dna.webp"
-          alt="RouteOne Showreel Racing DNA"
+          alt="Eyes on Me, a RouteOne film"
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           loading="lazy"
         />
@@ -89,7 +92,7 @@ export const Showreel: React.FC = () => {
             className="text-[11px] sm:text-xs font-semibold px-2.5 py-1 border border-white/20 shadow-md showreel-badge"
             style={{ color: '#FFFFFF', backgroundColor: 'rgba(0, 0, 0, 0.85)' }}
           >
-            Cinematic master · 04
+            RouteOne original
           </span>
         </div>
 
@@ -98,7 +101,7 @@ export const Showreel: React.FC = () => {
             className="text-[11px] font-semibold px-2.5 py-1 border border-[#FCD34D]/40 shadow-md showreel-gold"
             style={{ color: '#FCD34D', backgroundColor: 'rgba(0, 0, 0, 0.85)' }}
           >
-            Audio · 140 bpm synchronized
+            Edited by Ken Tiosejo
           </span>
         </div>
 
@@ -112,7 +115,7 @@ export const Showreel: React.FC = () => {
               setIsOpen(true);
             }}
             className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-white/40 bg-[#D71920] hover:bg-[#b5141a] text-white flex items-center justify-center transition-all duration-300 cursor-pointer mb-3 sm:mb-5 shadow-[0_0_35px_rgba(215,25,32,0.65)] group-hover:scale-110 active:scale-95"
-            aria-label="Play RouteOne Showreel in 4K"
+            aria-label="Play Eyes on Me, a RouteOne film"
           >
             <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-white text-white ml-1 transition-transform group-hover:scale-105" />
           </button>
@@ -125,7 +128,7 @@ export const Showreel: React.FC = () => {
               textShadow: '0 2px 14px rgba(0,0,0,0.95), 0 4px 30px rgba(0,0,0,0.95)',
             }}
           >
-            ORACLE RED BULL RACING RB19
+            EYES ON ME
           </h3>
 
           {/* Subtitle with High-Contrast Text-Shadow */}
@@ -136,7 +139,7 @@ export const Showreel: React.FC = () => {
               textShadow: '0 1px 8px rgba(0,0,0,0.95)',
             }}
           >
-            Max Verstappen · soundtrack: DNA. — Kendrick Lamar
+            A RouteOne Auto Club film · edited by Ken Tiosejo
           </p>
 
           {/* Call-to-Action Pill Badge */}
@@ -148,7 +151,7 @@ export const Showreel: React.FC = () => {
             }}
           >
             <Sparkles className="w-3.5 h-3.5 text-[#D71920]" />
-            <span className="font-semibold">Watch 4K showreel</span>
+            <span className="font-semibold">Watch the film</span>
           </span>
         </div>
       </div>
@@ -165,14 +168,14 @@ export const Showreel: React.FC = () => {
               isGarageLight ? 'text-[#85898A]' : 'text-[#85898A]'
             }`}
           >
-            Resolution
+            Title
           </span>
           <span
             className={`text-xs sm:text-sm font-semibold tracking-wider ${
               isGarageLight ? 'text-[#111415]' : 'text-[#F4F3EF]'
             }`}
           >
-            3840 × 2160 (4K uhd)
+            Eyes on Me
           </span>
         </div>
 
@@ -182,14 +185,14 @@ export const Showreel: React.FC = () => {
               isGarageLight ? 'text-[#85898A]' : 'text-[#85898A]'
             }`}
           >
-            Frame rate
+            Edited by
           </span>
           <span
             className={`text-xs sm:text-sm font-semibold tracking-wider ${
               isGarageLight ? 'text-[#111415]' : 'text-[#F4F3EF]'
             }`}
           >
-            60 fps racecraft
+            Ken Tiosejo
           </span>
         </div>
 
@@ -199,14 +202,14 @@ export const Showreel: React.FC = () => {
               isGarageLight ? 'text-[#85898A]' : 'text-[#85898A]'
             }`}
           >
-            Soundtrack
+            Produced for
           </span>
           <span
             className={`text-xs sm:text-sm font-semibold tracking-wider ${
               isGarageLight ? 'text-[#111415]' : 'text-[#F4F3EF]'
             }`}
           >
-            DNA. — 140 bpm
+            RouteOne Auto Club
           </span>
         </div>
 
@@ -216,15 +219,15 @@ export const Showreel: React.FC = () => {
               isGarageLight ? 'text-[#85898A]' : 'text-[#85898A]'
             }`}
           >
-            Telemetry
+            Format
           </span>
           <span className="text-xs sm:text-sm font-semibold tracking-wider text-[#D71920]">
-            100Hz CAN-BUS DATA
+            Video · sound on
           </span>
         </div>
       </div>
 
-      {/* YouTube Video Modal */}
+      {/* Film player (Google Drive) */}
       {isOpen && createPortal(
         <div
           id="showreel-modal"
@@ -243,7 +246,7 @@ export const Showreel: React.FC = () => {
                   className="text-[11px] font-semibold modal-title"
                   style={{ color: '#FFFFFF' }}
                 >
-                  RouteOne showreel · 4K cinematic master
+                  Eyes on Me · a RouteOne film
                 </span>
               </div>
               <button
@@ -260,8 +263,8 @@ export const Showreel: React.FC = () => {
             {/* Video Player */}
             <div className="relative aspect-video w-full bg-black">
               <iframe
-                title="RouteOne Motorsports Showreel"
-                src="https://www.youtube-nocookie.com/embed/o4QXiKLv9yo?autoplay=1&rel=0&modestbranding=1"
+                title="Eyes on Me, edited by Ken Tiosejo"
+                src={FILM_EMBED}
                 className="w-full h-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -272,16 +275,16 @@ export const Showreel: React.FC = () => {
             <div className="p-3.5 sm:p-4 bg-[#111415] border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3 text-xs ">
               <div className="flex items-center gap-2" style={{ color: '#E2E8F0' }}>
                 <Film className="w-3.5 h-3.5 text-[#D71920]" />
-                <span>Max Verstappen · oracle Red Bull racing RB19</span>
+                <span>Edited by Ken Tiosejo</span>
               </div>
               <a
-                href={meta.youtubeUrl}
+                href={FILM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 hover:text-[#D71920] transition-colors font-semibold"
                 style={{ color: '#FFFFFF' }}
               >
-                <span>Open on YouTube</span>
+                <span>Open in Google Drive</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
